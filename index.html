@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Due App - Tu Solución Colaborativa</title>
+    <style>
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+    padding: 50px 0;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#formulario {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+#formulario h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+#características {
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+#características h2 {
+    font-size: 24px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+/* Estilo del logotipo */
+header h1::before {
+    content: "";
+    display: block;
+    background-image: url('DUE APP.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 200px; /* Ajusta el tamaño del logotipo */
+    height: 100px; /* Ajusta el tamaño del logotipo */
+    margin: 0 auto 10px;
+}
+
+/* Estilos futuristas (puedes ajustar según tus preferencias) */
+button {
+    transition: background-color 0.3s;
+}
+
+body {
+    transition: background-color 0.3s;
+}
+
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Due App</h1>
+        <p>Tu solución colaborativa para equipos</p>
+    </header>
+
+    <section id="formulario">
+        <h2>Regístrate para obtener acceso</h2>
+        <form id="registration-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="teléfono">Teléfono:</label>
+            <input type="tel" id="teléfono" name="teléfono" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="button" id="submit-button">Registrarse</button>
+        </form>
+    </section>
+
+    <section id="características">
+        <h2>Características Destacadas de Due App</h2>
+        <ul>
+            <li>Colaboración en tiempo real</li>
+            <li>Gestión de tareas y proyectos</li>
+            <li>Comunicación efectiva en equipo</li>
+            <li>Integración con herramientas populares</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Due App. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("-Ym-r4wRWklw_FuxE"); // Reemplaza "user_yjv3csk" con tu User ID de EmailJS
+
+            document.getElementById("submit-button").addEventListener("click", function(event) {
+                event.preventDefault();
+
+                // Recoge los datos del formulario
+                var nombre = document.getElementById("nombre").value;
+                var teléfono = document.getElementById("teléfono").value;
+                var email = document.getElementById("email").value;
+
+                var templateParams = {
+                    nombre: nombre,
+                    teléfono: teléfono,
+                    email: email
+                };
+
+                emailjs.send("service_yjv3csk", "template_21pj2sk", templateParams)
+                    .then(function(response) {
+                        console.log("Correo electrónico enviado con éxito", response);
+                        alert("¡Gracias por registrarte! Te hemos enviado un correo de confirmación.");
+                    }, function(error) {
+                        console.error("Error al enviar el correo electrónico", error);
+                        alert("Ha habido un error al procesar tu solicitud. Por favor, inténtalo de nuevo más tarde.");
+                    });
+            });
+        })();
+    </script>
+</body>
+</html>
