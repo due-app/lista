@@ -149,21 +149,14 @@ body {
             <input type="email" id="email" name="email" required>
 
             <button type="button" id="submit-button">Registrarse</button>
+             <p id="confirmation-message" style="display: none;">Enviado, Te has suscrito a nuestra lista de espera</p>
         </form>
     </section>
 
-    <section id="características">
-        <h2>Características Destacadas de Due App</h2>
-        <ul>
-            <li>Colaboración en tiempo real</li>
-            <li>Gestión de tareas y proyectos</li>
-            <li>Comunicación efectiva en equipo</li>
-            <li>Integración con herramientas populares</li>
-        </ul>
-    </section>
+   
 
     <footer>
-        <p>&copy; 2023 Due App. Todos los derechos reservados.</p>
+        <p>2023 Due App. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
@@ -188,7 +181,8 @@ body {
                 emailjs.send("service_yjv3csk", "template_21pj2sk", templateParams)
                     .then(function(response) {
                         console.log("Correo electrónico enviado con éxito", response);
-                        alert("¡Gracias por registrarte! Te hemos enviado un correo de confirmación.");
+                        var confirmationMessage = document.getElementById("confirmation-message");
+                        confirmationMessage.style.display = "block";
                     }, function(error) {
                         console.error("Error al enviar el correo electrónico", error);
                         alert("Ha habido un error al procesar tu solicitud. Por favor, inténtalo de nuevo más tarde.");
